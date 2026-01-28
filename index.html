@@ -3,82 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>호식석권</title>
+    <title>칠공주회</title>
     <style>
-        /* 밝고 활기찬 '생맥주' 테마 */
-        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; }
+        /* 배경 설정: 여름 하늘과 나무 */
+        body { 
+            font-family: 'Malgun Gothic', sans-serif; 
+            margin: 0; padding: 0; 
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
+                        url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+        }
         
-        /* 헤더: 시원한 맥주 황금색 */
-        header { background-color: #f39c12; color: white; padding: 60px 0; text-align: center; border-bottom: 5px solid #e67e22; }
-        header h1 { margin: 0; font-size: 4rem; letter-spacing: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        header p { margin-top: 10px; font-size: 1.2rem; font-weight: bold; color: #fff3e0; }
+        header { background-color: rgba(44, 62, 80, 0.8); color: white; padding: 60px 0; text-align: center; }
+        header h1 { margin: 0; font-size: 3rem; letter-spacing: 5px; }
+        header p { margin-top: 10px; font-size: 1.2rem; color: #ecf0f1; }
         
-        /* 네비게이션: 깔끔한 진회색 */
-        nav { background-color: #2c3e50; display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; }
-        nav a { color: white; padding: 18px 30px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        nav a:hover { background-color: #e67e22; }
+        nav { background-color: rgba(52, 73, 94, 0.9); display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; padding: 15px 25px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        nav a:hover { background-color: #2980b9; }
 
-        .container { max-width: 900px; margin: 40px auto; padding: 40px; background: white; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); border-top: 10px solid #f39c12; }
+        .container { 
+            max-width: 900px; margin: 40px auto; padding: 40px; 
+            background: rgba(255, 255, 255, 0.9); 
+            border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+        }
         
-        /* 모임 안내 섹션 */
-        .info-section { line-height: 1.8; margin-bottom: 40px; }
-        .info-section h2 { color: #d35400; border-bottom: 2px solid #f39c12; padding-bottom: 10px; }
+        .info-section { line-height: 1.8; text-align: center; }
+        .info-section h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 15px; }
         
-        .rules { background-color: #fffde7; padding: 25px; border-radius: 10px; border-left: 5px solid #fbc02d; margin-top: 20px; }
-        .rules h3 { margin-top: 0; color: #f57f17; }
-        .rules ul { padding-left: 20px; }
-        .rules li { margin-bottom: 10px; font-weight: bold; }
-
-        footer { text-align: center; padding: 40px; color: #95a5a6; font-size: 0.9rem; }
-        .icon { font-size: 4rem; display: block; margin-bottom: 20px; }
+        .rules { text-align: left; background: #f9f9f9; padding: 25px; border-radius: 10px; border-left: 5px solid #3498db; margin-top: 30px; }
+        
+        footer { text-align: center; padding: 30px; color: #fff; text-shadow: 1px 1px 2px #000; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>70酒</h1>
-    <p>70년대생들의 유쾌한 음주 공간 (70-Zoo)</p>
+    <h1>70酒회</h1>
+    <p>우리들의 변치 않는 우정, 70년대생 주당(술과 당구) 모임</p>
 </header>
 
 <nav>
     <a href="index.html">대문</a>
-    <a href="members.html">주당소개</a>
-    <a href="#">술자리 기록</a>
-    <a href="#">다음 회식</a>
+    <a href="members.html">회원소개</a>
+    <a href="gallery.html">사진첩</a>
 </nav>
 
 <div class="container">
-    <div class="info-section" style="text-align: center;">
-        <span class="icon">🍺🍖🍢</span>
-        <h2>칠공주(70酒) 모임 안내</h2>
+    <div class="info-section">
+        <h2>모임 안내</h2>
         <p style="font-size: 1.2rem;">
-            저희 70酒는 <strong>70년대생</strong> 친구들이 모여<br>
-            인생의 희로애락을 술(酒) 한 잔에 털어버리는 정겨운 모임입니다.
+            <strong>서울컨벤션고등학교</strong> 70년대생 동료들이 모여<br>
+            인생과 교육, 그리고 주(酒)를 논하고 당구를 즐기는 정겨운 모임입니다.
         </p>
         
-        <div class="rules" style="text-align: left;">
-            <h3>※ 우리 모임 행동강령</h3>
-            <ul>
-                <li>첫째, 술은 즐겁게! 억지로 권하지 않는다.</li>
-                <li>둘째, 당구 칠 때는 매너를 지킨다. (기만형 30 배려 필수)</li>
-                <li>셋째, 안주는 넉넉히! 빈속에 마시지 않는다.</li>
-                <li>넷째, 무릎 아픈 회원은 택시비 지원 혹은 상석 배치!</li>
-                <li>다섯째, 집에 갈 때는 웃으면서 서로의 안전을 챙긴다.</li>
+        <div class="rules">
+            <h3 style="margin-top:0; color:#2980b9;">※ 모임 수칙</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom:10px;">✔ 모임엔 가급적 빠지지 말고 필참하자.</li>
+                <li style="margin-bottom:10px;">✔ 즐겁게 마시고, 안전하게 귀가하자.</li>
+                <li style="margin-bottom:10px;">✔ 음주 매너를 지키자.</li>
+                <li style="margin-bottom:10px;">✔ 당구 칠 때도 매너는 필수! (기만형 50 배려하기)</li>
             </ul>
         </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px; padding: 20px; background: #fdf2e9; border-radius: 10px;">
-        <p style="font-size: 1.1rem; color: #e67e22; font-weight: bold;">
-            "함께 마신 술보다 더 진한 것은 우리의 우정입니다."
-        </p>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 70酒 (Seven Princesses Drinking Club). 건배!
+    &copy; 2026 서울컨벤션고 70酒 모임. All Rights Reserved.
 </footer>
 
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
