@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>70주 - 사진첩</title>
+    <style>
+        body { 
+            font-family: 'Malgun Gothic', sans-serif; 
+            margin: 0; padding: 0; 
+            background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), 
+                        url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-attachment: fixed; background-position: center; color: #333;
+        }
+        header { background-color: rgba(44, 62, 80, 0.8); color: white; padding: 40px 0; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 5px; }
+        nav { background-color: rgba(52, 73, 94, 0.9); display: flex; justify-content: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; padding: 15px 25px; text-decoration: none; font-weight: bold; }
+        nav a:hover { background-color: #2980b9; }
+
+        .container { max-width: 1000px; margin: 40px auto; padding: 30px; background: rgba(255, 255, 255, 0.9); border-radius: 10px; }
+        .event-section { margin-bottom: 50px; padding-bottom: 30px; border-bottom: 2px dashed #bdc3c7; }
+        .event-info { background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 8px solid #3498db; margin-bottom: 20px; }
+        
+        /* 사진 그리드 설정 */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        
+        /* 사진 카드: 여기서 크기를 강제로 통일합니다 */
+        .photo-card { 
+            background: white; padding: 8px; border: 1px solid #ddd; border-radius: 8px; 
+            cursor: pointer; transition: 0.3s;
+            height: 200px; /* 모든 카드의 높이를 200px로 고정 */
+            overflow: hidden; /* 넘치는 사진은 숨김 */
+            display: flex; align-items: center; justify-content: center;
+        }
+        .photo-card:hover { transform: scale(1.03); }
+        
+        .photo-card img { 
+            width: 100%; height: 100%; 
+            object-fit: cover; /* 사진 비율을 유지하면서 틀에 꽉 채움 (중요!) */
+            border-radius: 5px;
+        }
+
+        #modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        #modal img { max-width: 90%; max-height: 85%; border: 3px solid white; border-radius: 5px; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 50px; font-weight: bold; cursor: pointer; }
+
+        footer { text-align: center; padding: 30px; color: #fff; text-shadow: 1px 1px 2px #000; }
+    </style>
+</head>
+<body>
+
+<header><h1>70酒 사진첩</h1></header>
+<nav>
+    <a href="index.html">대문</a>
+    <a href="members.html">회원소개</a>
+    <a href="gallery.html">사진첩</a>
+</nav>
+
+<div class="container">
+    <div class="event-section">
+        <div class="event-info">
+            <h2>📍 26년 1월 23일 별내 꾸석지돌판한우</h2>
+            <p><strong>참석:</strong> 당구장(전원 참석), 식사(김영재 회원 불참)</p>
+            <p><strong>내용:</strong> 신학년 준비기간 마지막날 칠공주가 별내에 모임. 영재 형 컨디션 난조로 조기 귀가하셔서 아쉬었음. 식사 도중 창밖으로 소리 없이 눈이 내린 낭만적인 밤.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260123_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260123_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260123_3.jpg"></div>
+        </div>
+    </div>
+
+    <div class="event-section">
+        <div class="event-info">
+            <h2>📍 26년 1월 8일 굽은다리역 전주감자탕</h2>
+            <p><strong>참석:</strong> 당구장(이인표 회원 불참), 식사(이인표 회원 불참)</p>
+            <p><strong>내용:</strong> 김정은 선생님 참석. 1차 감자탕, 2차 황제짜장 후 우리당구장 이동.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260108_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260108_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260108_3.jpg"></div>
+        </div>
+    </div>
+
+    <div class="event-section">
+        <div class="event-info">
+            <h2>📍 26년 1월 2일 별내 정동진회정육식당</h2>
+            <p><strong>참석:</strong> 당구장(전원 참석), 식사(전원 참석)</p>
+            <p><strong>내용:</strong> 시무식을 마치고 문덕균 교장선생님과 함께한 새해 첫 모임.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260102_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260102_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260102_3.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260102_4.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20260102_5.jpg"></div>
+        </div>
+    </div>
+
+     <div class="event-section">
+        <div class="event-info">
+            <h2>📍 25년 12월 12일 별내 장어의꿈</h2>
+            <p><strong>참석:</strong> 당구장(전원 참석), 식사(전원 참석)</p>
+            <p><strong>내용:</strong> 강유진 선생님과 함께한 25년 마지막 모임. 장어의꿈 소문대로 싸고 맛있음. </p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251212_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251212_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251212_3.jpg"></div>
+        </div>
+    </div>
+    
+     <div class="event-section">
+        <div class="event-info">
+            <h2>📍 25년 11월 27일 굽은다리역 요기고기</h2>
+            <p><strong>참석:</strong> 당구장(전원 참석), 식사(전원 참석)</p>
+            <p><strong>내용:</strong> 요기고기에서 즐겁게 식사하고 당구도 치고 노래방도 간 날. </p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251127_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251127_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251127_3.jpg"></div>
+        </div>
+    </div>
+
+    <div class="event-section">
+        <div class="event-info">
+            <h2>📍 25년 10월 20일 굽은다리역 삼겹살집</h2>
+            <p><strong>참석:</strong> 당구장(이인표 회원 불참), 식사(이인표 회원 불참)</p>
+            <p><strong>내용:</strong> 요기고기 휴일이라 근처 다른 삼겹살집에서 즐겁게 식사한 날. </p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251020_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251020_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20251020_3.jpg"></div>
+        </div>
+    </div>
+
+    <div class="event-section">
+        <div class="event-info">
+            <h2>📍 25년 8월 29일 굽은다리역 요기고기</h2>
+            <p><strong>참석:</strong> 당구장(전원 참석), 식사(전원 참석)</p>
+            <p><strong>내용:</strong> 요기고기에서 한잔하고 당구장에서 한 경기 함. 다시 황제짜장에서 한잔하고 그리고 또 다시 당구장에서 또 한 경기한 날. </p>
+        </div>
+        <div class="gallery-grid">
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20250829_1.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20250829_2.jpg"></div>
+            <div class="photo-card" onclick="showPhoto(this)"><img src="images/20250829_3.jpg"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modal" onclick="closePhoto()">
+    <span class="close-btn">&times;</span>
+    <img id="modalImg" src="" onclick="event.stopPropagation()">
+</div>
+
+<script>
+    function showPhoto(card) {
+        var src = card.getElementsByTagName('img')[0].src;
+        document.getElementById('modalImg').src = src;
+        document.getElementById('modal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closePhoto() {
+        document.getElementById('modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+</script>
+
+<footer>&copy; 2026 서울컨벤션고 70주 모임.</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
